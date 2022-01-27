@@ -1,0 +1,5 @@
+# JetBrains IDEs
+.idea
+
+# Go compiled files
+*.exe
