@@ -33,9 +33,20 @@ body {
     flex-direction: row;
 }
 
-.row2{
+.row2 {
     position: relative;
+    display: flex;
+    flex-direction: row;
     top: 10%;
+    left: 5%;
+}
+
+.row3 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    top: 10%;
+    left: 10%;
 }
 
 .wrapper .icon {
@@ -53,6 +64,10 @@ body {
     flex-direction: column;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.icon span {
+    font-weight: bold;
 }
 
 .wrapper .tooltip {
