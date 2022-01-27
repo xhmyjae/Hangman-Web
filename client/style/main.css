@@ -115,3 +115,17 @@ body {
     background-color: #de463b;
     color: #ffffff;
 }
+
+.wrapper .letter:visited {
+    background-color: darkgray;
+}
+
+.clicked {
+    background-color: #3030308c !important;
+    filter: opacity(50%);
+    cursor: default;
+}
+
+.hide {
+    display: none;
+}
