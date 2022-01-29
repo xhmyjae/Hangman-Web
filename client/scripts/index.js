@@ -1,33 +1,36 @@
-let elements = document.querySelectorAll(".icon");
+const elements = document.querySelectorAll(".icon");
 
-function letter_used(element) {
-    if (element.classList.contains('clicked')) {
-        console.log('already clicked ' + (element.querySelector("span").innerText))
-    } else {
-        element.classList.add('clicked')
-        element.classList.remove('letter')
-        element.querySelector('.tooltip').style.display = "none";
-        console.log(element.querySelector("span").innerText)
-    }
+function letterUsed(element) {
+    element.classList.add('clicked');
+    element.classList.remove('letter');
+    console.log(element.querySelector("span").innerText);
 }
 
 elements.forEach(element => {
-    element.addEventListener("click", () => {
-        letter_used(element);
-    })
-})
+    element.addEventListener("click", () => letterUsed(element), {once: true});
+    element.addEventListener('mouseenter', () => {
+        if (element.classList.contains('clicked')) return;
+        const tooltip = document.querySelector('.tooltip');
+        tooltip.style.visibility = 'visible';
+        tooltip.remove();
+        element.appendChild(tooltip);
+        tooltip.classList.add('smooth-spawn');
+    });
 
-document.addEventListener('keydown', function (event) {
-    let key = event.key.toLowerCase();
-    if (key >= 'a' && key <= 'z') {
-        console.log(key)
-        let element1 = [...document.querySelectorAll("span")].find(element => {
-            return element.innerText === key.toUpperCase();
-        }).parentNode;
-        console.log(element1)
-        if (!element1) {
-            return
-        }
-        letter_used(element1) //need to translate it (element = key)
+    element.addEventListener('mouseleave', () => {
+        const tooltip = element.querySelector('.tooltip');
+        tooltip.style.visibility = 'hidden';
+        tooltip.classList.remove('smooth-spawn');
+    });
+});
+
+document.addEventListener('keydown', event => {
+    const key = event.key.toLowerCase();
+    if (key.length === 1 && key >= 'a' && key <= 'z') {
+        const element = [...document.querySelectorAll("span")]
+            .find(element => element.innerText === key.toUpperCase()).parentNode;
+
+        if (!element) return;
+        letterUsed(element)
     }
 });
