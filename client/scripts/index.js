@@ -1,4 +1,4 @@
-let elements = document.querySelectorAll(".icon");
+let elements = document.querySelectorAll(".icon")
 
 function letter_used(element) {
     if (element.classList.contains('clicked')) {
@@ -33,19 +33,34 @@ document.addEventListener('keyup', function (event) {
     }
 });
 
-document.addEventListener('keydown', function (event) {
-    let letter = document.querySelectorAll(".letter");
-    let key = event.key.toLowerCase();
-    if (key >= 'a' && key <= 'z') {
-        let element1 = [...document.querySelectorAll("span")].find(element => {
-            return element.innerText === key.toUpperCase();
-        }).parentNode;
-        if (!element1) {
-            return
-        }
+elements.forEach(element => {
+    element.addEventListener("click", () => letterUsed(element), {once: true});
+    element.addEventListener('mouseenter', () => {
+        if (element.classList.contains('clicked')) return;
+        const tooltip = document.querySelector('.tooltip');
+        tooltip.style.visibility = 'visible';
+        tooltip.remove();
+        element.appendChild(tooltip);
+        tooltip.classList.add('smooth-spawn');
+    });
+
+    element.addEventListener('mouseleave', () => {
+        const tooltip = element.querySelector('.tooltip');
+        tooltip.style.visibility = 'hidden';
+        tooltip.classList.remove('smooth-spawn');
+    });
+});
+
+document.addEventListener('keydown', event => {
+    const key = event.key.toLowerCase();
+    if (key.length === 1 && key >= 'a' && key <= 'z') {
+        const element = [...document.querySelectorAll("span")]
+            .find(element => element.innerText === key.toUpperCase()).parentNode;
+
+        if (!element) return;
         if (document.hasFocus()) {
-            if (!element1.classList.contains('clicked')) {
-                element1.classList.add('border_letter')
+            if (!element.classList.contains('clicked')) {
+                element.classList.add('border_letter')
             }
         }
     }
