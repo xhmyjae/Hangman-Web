@@ -2,13 +2,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
-/**:focus,*/
-/**:active {*/
-/*    outline: none !important;*/
-/*    -webkit-tap-highlight-color: transparent;*/
-/*}*/
+.letter:active {
+    border: solid 4px darkorange;
+}
+
+.border_letter {
+    border: solid 4px darkorange;
+    transition: all 0.5s;
+}
+
 
 html,
 body {
@@ -22,10 +27,6 @@ body {
 
 .wrapper {
     display: block;
-}
-
-.icon {
-    cursor: pointer;
 }
 
 .row1 {
@@ -64,7 +65,7 @@ body {
     align-items: center;
     flex-direction: column;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.3s ease;
 }
 
 .icon span {
@@ -94,7 +95,7 @@ body {
     bottom: -3px;
     left: 50%;
     transform: translate(-50%) rotate(45deg);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .wrapper .icon:hover .tooltip {
