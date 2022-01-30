@@ -8,23 +8,29 @@
     <meta name="description" content="a hangman game about a guy named jose, ez win">
     <title>El famoso vie de Josè</title>
 
-    <link rel="stylesheet" href="../style/main.css">
-    <link rel="stylesheet" href="../style/hangman.css">
-    <link rel="stylesheet" href="../style/input.css">
-    <link rel="stylesheet" href="../style/words_letters.css">
+    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="/static/hangman.css">
+    <link rel="stylesheet" href="/static/input.css">
+    <link rel="stylesheet" href="/static/words_letters.css">
 </head>
 
 <body>
 
     <div>
-        <div class="hangman"></div>
+        <div class="hangman">
+            {{.Position}}
+            {{.ToFind}}
+        </div>
 
-        <div class="word_hidden"></div>
+        <div class="word_hidden">
+            {{.HiddenWord}}
+        </div>
     </div>
 
     <div>
         <div class="letters_tried">
-            c aw qanikawbcnq sanolq qaocnbqoalw d
+            {{.Tried}}
+            {{.Attempts}}
         </div>
 
         <form class="word_input" method="get">
@@ -34,7 +40,7 @@
         </form>
 
         <div class="input_answer">
-            sdoubvgosvfwofh9w ui h9wi gfiuwrfgyi
+            {{.Answer}}
         </div>
     </div>
 
