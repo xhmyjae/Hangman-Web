@@ -1,6 +1,6 @@
 let elements = document.querySelectorAll(".icon")
 
-function letter_used(element) {
+function letterUsed(element) {
     if (element.classList.contains('clicked')) {
         console.log('already clicked ' + (element.querySelector("span").innerText))
     } else {
@@ -10,12 +10,6 @@ function letter_used(element) {
         console.log(element.querySelector("span").innerText)
     }
 }
-
-elements.forEach(element => {
-    element.addEventListener("click", () => {
-        letter_used(element);
-    })
-})
 
 document.addEventListener('keyup', function (event) {
     let key = event.key.toLowerCase();
@@ -29,7 +23,7 @@ document.addEventListener('keyup', function (event) {
             return
         }
         element1.classList.remove('border_letter')
-        letter_used(element1)
+        letterUsed(element1)
     }
 });
 
