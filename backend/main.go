@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"math/rand"
 	"net/http"
@@ -20,11 +19,13 @@ func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 
+		WordTried := r.FormValue("wordTried")
 
-		println("test")
 		clay.Init(GetRandomWord("resources/words.txt"))
 
+		clay.loadGame(r)
 		tmpl.Execute(w, clay)
+		//println(WordTried)
 	})
 
 	http.ListenAndServe(":8999", nil)

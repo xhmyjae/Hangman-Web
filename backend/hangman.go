@@ -13,6 +13,7 @@ type Hangman struct {
 	TriedLetters string   `json:"tried_letters"`
 	TriedWords   []string `json:"tried_words"`
 	Word         string   `json:"word"`
+	WordTried string	  `json:"word_tried"`
 }
 
 func GetRandomWord(filename string) string {
