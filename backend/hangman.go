@@ -8,10 +8,11 @@ import (
 )
 
 type Hangman struct {
-	ActualWord string `json:"actual_word"`
-	Letters    string `json:"letters"`
-	Lives      int    `json:"lives"`
-	Word       string `json:"word"`
+	Letters    string   `json:"letters"`
+	MaxLives   int      `json:"max_lives"`
+	PlayerWord string   `json:"Player_word"`
+	TriedWords []string `json:"tried_words"`
+	Word       string   `json:"word"`
 }
 
 func GetRandomWord(filename string) string {
@@ -28,16 +29,28 @@ func ReadFile(filename string) string {
 }
 
 func (Hangman *Hangman) Init(word string) {
-	Hangman.Lives = 10
+	Hangman.MaxLives = 10
 	Hangman.Word = word
-	Hangman.ActualWord = strings.Repeat("_", len(word))
+	Hangman.PlayerWord = strings.Repeat("_", len(word))
+}
+
+func (Hangman *Hangman) GetLives() int {
+	return len(Hangman.Letters)
+}
+
+func (Hangman *Hangman) TryWord(word string) bool {
+	if word == Hangman.Word {
+		Hangman.TriedWords = append(Hangman.TriedWords, word)
+		return true
+	}
+	return false
 }
 
 func (Hangman *Hangman) TryLetter(letter string) bool {
 	if strings.Contains(Hangman.Word, letter) {
 		for i, l := range Hangman.Word {
 			if string(l) == letter {
-				Hangman.ActualWord = Hangman.ActualWord[:i] + letter + Hangman.ActualWord[i+1:]
+				Hangman.PlayerWord = Hangman.PlayerWord[:i] + letter + Hangman.PlayerWord[i+1:]
 			}
 		}
 		return true
@@ -48,5 +61,5 @@ func (Hangman *Hangman) TryLetter(letter string) bool {
 }
 
 func (Hangman *Hangman) IsFinished() bool {
-	return Hangman.ActualWord == Hangman.Word
+	return Hangman.PlayerWord == Hangman.Word
 }

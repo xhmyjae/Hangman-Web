@@ -28,8 +28,23 @@ document.addEventListener('keyup', function (event) {
         if (!element1) {
             return
         }
-        letter_used(element1)
         element1.classList.remove('border_letter')
+        letter_used(element1)
+    }
+});
+
+document.addEventListener('keydown', event => {
+    const key = event.key.toLowerCase();
+    if (key.length === 1 && key >= 'a' && key <= 'z') {
+        const element = [...document.querySelectorAll("span")]
+            .find(element => element.innerText === key.toUpperCase()).parentNode;
+
+        if (!element) return;
+        if (document.hasFocus()) {
+            if (!element.classList.contains('clicked')) {
+                element.classList.add('border_letter')
+            }
+        }
     }
 });
 
@@ -49,19 +64,4 @@ elements.forEach(element => {
         tooltip.style.visibility = 'hidden';
         tooltip.classList.remove('smooth-spawn');
     });
-});
-
-document.addEventListener('keydown', event => {
-    const key = event.key.toLowerCase();
-    if (key.length === 1 && key >= 'a' && key <= 'z') {
-        const element = [...document.querySelectorAll("span")]
-            .find(element => element.innerText === key.toUpperCase()).parentNode;
-
-        if (!element) return;
-        if (document.hasFocus()) {
-            if (!element.classList.contains('clicked')) {
-                element.classList.add('border_letter')
-            }
-        }
-    }
 });
