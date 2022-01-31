@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -33,22 +34,33 @@ func main() {
 	http.Handle("/js/", http.StripPrefix("/js/", js))
 	http.Handle("/resources/", http.StripPrefix("/resources/", resources))
 
-
-	state.Clay.Init(GetRandomWord("./backend/resources/words.txt"))
+	state.Clay.InitRandomWord()
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		state.Menu = "main"
 		tmpl.ExecuteTemplate(w, "main", state)
 	})
 
 	http.HandleFunc("/hangman", func(w http.ResponseWriter, r *http.Request) {
+		letter := r.FormValue("word_text")
+		if letter == "" {
+			letter = r.URL.Query().Get("word_text")
+		}
 		state.Menu = "game"
 
-		state.Clay.loadGame(r)
+		if letter != "" {
+			state.Clay.loadGame(r, strings.ToLower(letter))
+		}
 		tmpl.ExecuteTemplate(w, "main", state)
 	})
 
 	http.HandleFunc("/rules", func(w http.ResponseWriter, r *http.Request) {
 		state.Menu = "rules"
+		tmpl.ExecuteTemplate(w, "main", state)
+	})
+
+	http.HandleFunc("/reload", func(w http.ResponseWriter, r *http.Request) {
+		state.Clay.InitRandomWord()
+		state.Menu = "game"
 		tmpl.ExecuteTemplate(w, "main", state)
 	})
 

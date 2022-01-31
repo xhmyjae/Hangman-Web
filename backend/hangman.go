@@ -13,7 +13,6 @@ type Hangman struct {
 	TriedLetters string   `json:"tried_letters"`
 	TriedWords   []string `json:"tried_words"`
 	Word         string   `json:"word"`
-	WordTried string	  `json:"word_tried"`
 }
 
 func GetRandomWord(filename string) string {
@@ -33,6 +32,10 @@ func (Hangman *Hangman) Init(word string) {
 	Hangman.MaxLives = 10
 	Hangman.Word = word
 	Hangman.PlayerWord = strings.Repeat("_", len(word))
+}
+
+func (Hangman *Hangman) InitRandomWord() {
+	Hangman.Init(GetRandomWord("./backend/resources/words.txt"))
 }
 
 func (Hangman *Hangman) GetLives() int {

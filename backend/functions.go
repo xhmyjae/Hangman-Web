@@ -2,8 +2,7 @@ package main
 
 import "net/http"
 
-func (Hangman *Hangman) loadGame(r *http.Request) {
-	letter := r.FormValue("word_tried")
+func (Hangman *Hangman) loadGame(r *http.Request, letter string) {
 	if len(letter) > 1 {
 		if Hangman.TryWord(letter) {
 			state.Menu = "win"
@@ -16,7 +15,6 @@ func (Hangman *Hangman) loadGame(r *http.Request) {
 		}
 	}
 	if Hangman.GetLives() <= 0 {
-		state.Menu = "game-over"
+		state.Menu = "lose"
 	}
-	Hangman.loadGame(r)
 }

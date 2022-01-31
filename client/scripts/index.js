@@ -1,13 +1,17 @@
 let elements = document.querySelectorAll(".icon")
 
 function letterUsed(element) {
+    const letter = element.querySelector("span").innerText;
     if (element.classList.contains('clicked')) {
-        console.log('already clicked ' + (element.querySelector("span").innerText))
+        console.log('already clicked ' + letter)
     } else {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('word_text', letter);
+        window.location.search = urlParams;
         element.classList.add('clicked')
         element.classList.remove('letter')
         element.querySelector('.tooltip').style.display = "none";
-        console.log(element.querySelector("span").innerText)
+        console.log(letter)
     }
 }
 
