@@ -1,0 +1,28 @@
+{{define "main"}}
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hangman</title>
+        <link href="/static/index.css" rel="stylesheet">
+        <link href="/static/button.css" rel="stylesheet">
+        <link href="/static/main.css" rel="stylesheet">
+    </head>
+    <body>
+    <div class="content">
+        {{if eq .Menu "main"}}
+            <a class="button" href="/rules">
+                <span>Hangman</span>
+            </a>
+            <a class="button" href="/hangman">
+                <span>Jouer</span>
+            </a>
+        {{else if eq .Menu "rules"}}
+            {{template "rules" .}}
+        {{else if eq .Menu "game"}}
+            {{template "game" .}}
+        {{end}}
+    </div>
+    </body>
+</html>
+{{end}}
