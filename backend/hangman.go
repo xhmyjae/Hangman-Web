@@ -8,11 +8,11 @@ import (
 )
 
 type Hangman struct {
-	Letters    string   `json:"letters"`
-	MaxLives   int      `json:"max_lives"`
-	PlayerWord string   `json:"Player_word"`
-	TriedWords []string `json:"tried_words"`
-	Word       string   `json:"word"`
+	MaxLives     int      `json:"max_lives"`
+	PlayerWord   string   `json:"player_word"`
+	TriedLetters string   `json:"tried_letters"`
+	TriedWords   []string `json:"tried_words"`
+	Word         string   `json:"word"`
 }
 
 func GetRandomWord(filename string) string {
@@ -35,7 +35,7 @@ func (Hangman *Hangman) Init(word string) {
 }
 
 func (Hangman *Hangman) GetLives() int {
-	return len(Hangman.Letters)
+	return Hangman.MaxLives - (len(Hangman.TriedLetters) + len(Hangman.TriedWords)*2)
 }
 
 func (Hangman *Hangman) TryWord(word string) bool {
@@ -55,7 +55,7 @@ func (Hangman *Hangman) TryLetter(letter string) bool {
 		}
 		return true
 	} else {
-		Hangman.Letters += letter
+		Hangman.TriedLetters += letter
 		return false
 	}
 }
