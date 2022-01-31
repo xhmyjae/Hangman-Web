@@ -1,0 +1,40 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.button {
+    display: flex;
+    padding: 10px 45px;
+    margin: 20px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    color: white;
+    background: #b392ac;
+    transition: 1s;
+    box-shadow: 6px 6px 0 black;
+    transform: skewX(-15deg);
+    cursor: pointer;
+    width: fit-content;
+    text-align: center;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button:hover {
+    transition: 0.5s;
+    box-shadow: 10px 10px 0 #DDC67B;
+}
+
+.button span {
+    transform: skewX(15deg)
+}
+
+.default_cursor {
+    cursor: default;
+}

@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:900i');
+
 :root {
-    --letter-size: 30px;
+    --letter-size: 40px;
     --letter-padding: 20px;
-    --tooltip-size: 20px;
+    --tooltip-size: 15px;
 }
 
 html, body {
@@ -15,6 +17,7 @@ html, body {
 .letters {
     position: relative;
     margin-left: 30vw;
+    max-height: 0;
 }
 
 .wrapper {
@@ -122,7 +125,7 @@ html, body {
 .wrapper .letter:hover,
 .wrapper .letter:hover .tooltip,
 .wrapper .letter:hover .tooltip::before {
-    background-color: #de463b;
+    background-color: #b392ac;
     color: #ffffff;
 }
 
@@ -141,12 +144,12 @@ html, body {
 }
 
 .letter:active {
-    border: solid 4px darkorange;
+    border: solid 4px #DDC67B;
     box-sizing: border-box;
 }
 
 .border_letter {
-    border: solid 4px darkorange;
+    border: solid 4px #DDC67B;
     transition: all 0.5s;
 }
 
