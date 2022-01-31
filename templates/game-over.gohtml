@@ -1,0 +1,13 @@
+{{define "game-over"}}
+<div class="game-over">
+    <div class="game-over-title">
+        <h1>Game Over</h1>
+    </div>
+    <div class="game-over-score">
+        <h2>Your score: {{.Score}}</h2>
+    </div>
+    <div class="game-over-buttons">
+        <button class="game-over-button" onclick="window.location.href='/'">Play Again</button>
+    </div>
+</div>
+{{end}}

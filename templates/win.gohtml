@@ -1,0 +1,18 @@
+{{define "win"}}
+    <div class="win">
+        <div class="win-content">
+            <div class="win-title">
+                <h1>Tu as gagné</h1>
+            </div>
+            <div class="win-body">
+                    Bravo, tu as gagné !<br>
+                    Tu as trouvé {{.Word}}<br>
+                    Tu as {{.Score}} points
+                    <a href="/">Recommencer</a>
+            </div>
+            <div class="win-footer">
+                <button class="win-btn win-btn-primary" onclick="{{.OnClick}}">{{.BtnText}}</button>
+            </div>
+        </div>
+    </div>
+{{end}}
