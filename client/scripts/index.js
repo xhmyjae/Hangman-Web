@@ -1,48 +1,20 @@
 const elements = document.querySelectorAll('.icon');
+const inputs = [...document.querySelectorAll('p.player_input')];
+const lettersEntered = inputs.map(letter => letter.innerText.replace('_', '')).join('');
+console.log(lettersEntered);
 
 function letterUsed(element) {
     const letter = element.querySelector('span').innerText;
-    if (element.classList.contains('clicked')) {
-        console.log('already clicked ' + letter);
-    } else {
-        const urlParams = new URLSearchParams(window.location.search);
-        urlParams.set('word_text', letter);
-        window.location.search = urlParams.toString();
-        element.classList.add('clicked');
-        element.classList.remove('letter');
-        element.querySelector('.tooltip').style.display = 'none';
-        console.log(letter);
-    }
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('word_text', letter);
+    window.location.search = urlParams.toString();
+    element.classList.add('clicked');
+    element.classList.remove('letter');
+    element.querySelector('.tooltip').style.display = 'none';
 }
 
-document.addEventListener('keyup', event => {
-    if (document.activeElement.tagName.toLowerCase() === 'input') return;
-    const key = event.key.toLowerCase();
-    if (key >= 'a' && key <= 'z') {
-        const el = [...document.querySelectorAll('span')].find(element => element.innerText === key.toUpperCase()).parentNode;
-        if (!el) return;
-        el.classList.remove('border_letter');
-        letterUsed(el);
-    }
-});
-
-document.addEventListener('keydown', event => {
-    if (document.activeElement.tagName.toLowerCase() === 'input') return;
-    const key = event.key.toLowerCase();
-    if (key.length === 1 && key >= 'a' && key <= 'z') {
-        const element = [...document.querySelectorAll('span')].find(element => element.innerText === key.toUpperCase()).parentNode;
-
-        if (!element) return;
-        if (document.hasFocus()) {
-            if (!element.classList.contains('clicked')) {
-                element.classList.add('border_letter');
-            }
-        }
-    }
-});
-
 elements.forEach(element => {
-    element.addEventListener('click', () => letterUsed(element), {once: true});
+    element.addEventListener('click', letterUsed);
     element.addEventListener('mouseenter', () => {
         if (element.classList.contains('clicked')) return;
         const tooltip = document.querySelector('.tooltip');
@@ -54,7 +26,17 @@ elements.forEach(element => {
 
     element.addEventListener('mouseleave', () => {
         const tooltip = element.querySelector('.tooltip');
+        if (!tooltip) return;
         tooltip.style.visibility = 'hidden';
         tooltip.classList.remove('smooth-spawn');
     });
+
+    if (lettersEntered.includes(element.querySelector('span').innerText.toLowerCase())) {
+        element.classList.add('clicked');
+        element.classList.remove('letter');
+        const tooltip = element.querySelector('.tooltip');
+        if (!tooltip) return;
+        tooltip.style.display = 'none';
+        element.removeEventListener('click', letterUsed);
+    }
 });

@@ -1,4 +1,5 @@
 {{define "game"}}
+    <script defer src="/js/events.js"></script>
     <script defer src="/js/index.js"></script>
 
     <form class="word_input" method="post">
@@ -8,8 +9,8 @@
 
     <div class="data">
         <p class="classic_text">{{.Lives}}</p>
-        <p class="classic_text">{{.PlayerWord}}</p>
-        <p class="classic_text">{{.TriedLetters}}</p>
+        <p class="classic_text player_input">{{.PlayerWord}}</p>
+        <p class="classic_text player_input">{{.TriedLetters}}</p>
         <p class="classic_text">{{range .TriedWords}}
                 {{.}}
             {{end}}</p>
@@ -105,12 +106,11 @@
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve" width="50px"
                  height="50px" class="svg_back">
-    <g>
-        <polygon points="332.668,490 82.631,244.996 332.668,0 407.369,76.493 235.402,244.996 407.369,413.507 		"/>
-    </g>
-
-
-                <span>Retour</span></svg>
+                <g>
+                    <polygon points="332.668,490 82.631,244.996 332.668,0 407.369,76.493 235.402,244.996 407.369,413.507 		"/>
+                </g>
+            </svg>
+            <span>Retour</span>
         </a>
     </div>
 {{end}}
