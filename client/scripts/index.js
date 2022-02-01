@@ -33,14 +33,16 @@ document.addEventListener('keyup', function (event) {
 
 document.addEventListener('keydown', event => {
     const key = event.key.toLowerCase();
-    if (key.length === 1 && key >= 'a' && key <= 'z') {
-        const element = [...document.querySelectorAll("span")]
-            .find(element => element.innerText === key.toUpperCase()).parentNode;
+    if (document.targetElement.tagName !== "form") {
+        if (key.length === 1 && key >= 'a' && key <= 'z') {
+            const element = [...document.querySelectorAll("span")]
+                .find(element => element.innerText === key.toUpperCase()).parentNode;
 
-        if (!element) return;
-        if (document.hasFocus()) {
-            if (!element.classList.contains('clicked')) {
-                element.classList.add('border_letter')
+            if (!element) return;
+            if (document.hasFocus()) {
+                if (!element.classList.contains('clicked')) {
+                    element.classList.add('border_letter')
+                }
             }
         }
     }
