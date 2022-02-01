@@ -10,6 +10,7 @@
     position: relative;
     margin-left: 30vw;
     max-height: 0;
+    width: 100%;
 }
 
 .wrapper {
