@@ -3,7 +3,7 @@ document.addEventListener('keyup', event => {
 	const key = event.key.toLowerCase();
 	if (key >= 'a' && key <= 'z') {
 		const el = [...document.querySelectorAll('span')].find(element => element.innerText === key.toUpperCase()).parentNode;
-		if (!el) return;
+		if (!el || el.parentElement.classList.contains('clicked')) return;
 		el.classList.remove('border_letter');
 		letterUsed(el);
 	}
