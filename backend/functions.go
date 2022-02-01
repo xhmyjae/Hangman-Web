@@ -14,7 +14,7 @@ func (Hangman *Hangman) loadGame(r *http.Request, letter string) {
 			}
 		}
 	}
-	if Hangman.GetLives() <= 0 {
+	if Hangman.Lives <= 0 {
 		state.Menu = "lose"
 	}
 }
