@@ -42,7 +42,7 @@ func (Hangman *Hangman) InitRandomWord() {
 	var file string
 	if Hangman.Difficulty == "ez" {
 		file = "words.txt"
-	} else if Hangman.Difficulty == "trql" {
+	} else if Hangman.Difficulty == "moyen" {
 		file = "words2.txt"
 	} else {
 		file = "words3.txt"
