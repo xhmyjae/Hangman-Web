@@ -166,3 +166,13 @@
     box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2);
     font-family: "Poppins", sans-serif;
 }
+
+.images {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vw;
+}
+
+img {
+    width: 20%;
+}

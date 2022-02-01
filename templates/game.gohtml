@@ -2,6 +2,11 @@
     <script defer src="/js/events.js"></script>
     <script defer src="/js/index.js"></script>
 
+    <p class="classic_text">{{.Lives}}</p>
+    <div class="images">
+        <img src="/resources/hangman{{.Lives}}.png" alt="hangman">
+    </div>
+
     <form class="word_input" method="post">
         <input type="text" name="word_text" class="word_text" placeholder="Rentrer un mot...">
         <button type="submit" value="Try" class="word_text">TRY</button>
