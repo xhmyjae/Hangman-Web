@@ -14,7 +14,7 @@ function letterUsed(element) {
 }
 
 elements.forEach(element => {
-    element.addEventListener('click', letterUsed);
+    element.addEventListener('click', () => letterUsed(element));
     element.addEventListener('mouseenter', () => {
         if (element.classList.contains('clicked')) return;
         const tooltip = document.querySelector('.tooltip');
@@ -37,6 +37,6 @@ elements.forEach(element => {
         const tooltip = element.querySelector('.tooltip');
         if (!tooltip) return;
         tooltip.style.display = 'none';
-        element.removeEventListener('click', letterUsed);
+        element.removeEventListener('click', () => letterUsed(element));
     }
 });
