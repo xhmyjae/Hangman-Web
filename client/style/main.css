@@ -115,14 +115,14 @@
 
 .wrapper .icon:hover span,
 .wrapper .icon:hover .tooltip {
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+    text-shadow: 0 -1px 0 rgba(255 0 0 / 99%);
 }
 
 .wrapper .letter:hover,
 .wrapper .letter:hover .tooltip,
 .wrapper .letter:hover .tooltip::before {
     color: #c4c3ca;
-    background-color: #28282f;
+    background-color: #323949;
 }
 
 .wrapper .letter:visited {
