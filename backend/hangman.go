@@ -9,6 +9,7 @@ import (
 
 type Hangman struct {
 	MaxLives     int      `json:"max_lives"`
+	Lives 		 int 	  `json:"lives"`
 	PlayerWord   string   `json:"player_word"`
 	TriedLetters string   `json:"tried_letters"`
 	TriedWords   []string `json:"tried_words"`
@@ -29,8 +30,10 @@ func ReadFile(filename string) string {
 }
 
 func (Hangman *Hangman) Init(word string) {
-	Hangman.MaxLives = 10
+	Hangman.Lives = 10
 	Hangman.Word = word
+	Hangman.TriedWords = []string{}
+	Hangman.TriedLetters = ""
 	Hangman.PlayerWord = strings.Repeat("_", len(word))
 }
 
@@ -47,6 +50,7 @@ func (Hangman *Hangman) TryWord(word string) bool {
 		Hangman.TriedWords = append(Hangman.TriedWords, word)
 		return true
 	}
+	Hangman.Lives -= 2
 	return false
 }
 
@@ -60,6 +64,7 @@ func (Hangman *Hangman) TryLetter(letter string) bool {
 		return true
 	} else {
 		Hangman.TriedLetters += letter
+		Hangman.Lives--
 		return false
 	}
 }
