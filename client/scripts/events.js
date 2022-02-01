@@ -23,3 +23,9 @@ document.addEventListener('keydown', event => {
 		}
 	}
 });
+
+const input = document.querySelector('input.word_text');
+input.addEventListener('beforeinput', (event) => {
+	if (event.data <= 'a' || event.data >= 'z') event.preventDefault();
+	event.textContent += event.data;
+});
