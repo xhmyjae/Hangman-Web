@@ -12,8 +12,8 @@
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-size: 40px;
-    color: white;
-    background: #b392ac;
+    color: #c4c3ca;
+    background-color: #28282f;
     transition: 1s;
     box-shadow: 6px 6px 0 black;
     transform: skewX(-15deg);
@@ -28,7 +28,7 @@
 
 .button:hover {
     transition: 0.5s;
-    box-shadow: 10px 10px 0 #DDC67B;
+    box-shadow: 10px 10px 0 #292e3b;
 }
 
 .button span {
@@ -37,4 +37,17 @@
 
 .default_cursor {
     cursor: default;
+}
+
+#gameback {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.svg_back {
+    fill: #c4c3ca;
+    height: 40px;
+    width: 40px;
+    margin: 10px;
 }
