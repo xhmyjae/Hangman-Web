@@ -44,7 +44,6 @@ func main() {
 	http.Handle("/js/", http.StripPrefix("/js/", js))
 	http.Handle("/resources/", http.StripPrefix("/resources/", resources))
 
-	state.Clay.InitRandomWord()
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		queries := r.URL.Query()
 		if queries.Get("reload") == "true" {
@@ -56,6 +55,12 @@ func main() {
 	})
 
 	http.HandleFunc("/hangman", func(w http.ResponseWriter, r *http.Request) {
+		queries := r.URL.Query()
+		if queries.Has("difficulty") {
+			state.Clay.Difficulty = queries.Get("difficulty")
+			state.Clay.InitRandomWord()
+			http.Redirect(w, r, "/hangman", http.StatusSeeOther)
+		}
 		letter := r.FormValue("word_text")
 		if letter == "" {
 			letter = r.URL.Query().Get("word_text")

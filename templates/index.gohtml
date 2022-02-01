@@ -14,9 +14,17 @@
             <a class="button" href="/rules">
                 <span>Hangman</span>
             </a>
-            <a class="button" href="/hangman">
-                <span>Jouer</span>
-            </a>
+                <div>
+                    <a class="button" href="/hangman?difficulty=ez">
+                        <span>Jouer ez</span>
+                    </a>
+                    <a class="button" href="/hangman?difficulty=trql">
+                        <span>Jouer trql</span>
+                    </a>
+                    <a class="button" href="/hangman?difficulty=hard">
+                        <span>Jouer hard</span>
+                    </a>
+                </div>
         {{else if eq .Menu "rules"}}
             {{template "rules" .}}
         {{else if eq .Menu "game"}}

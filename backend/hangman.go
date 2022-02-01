@@ -8,12 +8,13 @@ import (
 )
 
 type Hangman struct {
-	MaxLives     int      `json:"max_lives"`
-	Lives 		 int 	  `json:"lives"`
-	PlayerWord   string   `json:"player_word"`
-	TriedLetters string   `json:"tried_letters"`
-	TriedWords   []string `json:"tried_words"`
-	Word         string   `json:"word"`
+	Difficulty string
+	MaxLives     int
+	Lives 		 int
+	PlayerWord   string
+	TriedLetters string
+	TriedWords   []string
+	Word         string
 }
 
 func GetRandomWord(filename string) string {
@@ -38,7 +39,15 @@ func (Hangman *Hangman) Init(word string) {
 }
 
 func (Hangman *Hangman) InitRandomWord() {
-	Hangman.Init(GetRandomWord("./backend/resources/words.txt"))
+	var file string
+	if Hangman.Difficulty == "ez" {
+		file = "words.txt"
+	} else if Hangman.Difficulty == "trql" {
+		file = "words2.txt"
+	} else {
+		file = "words3.txt"
+	}
+	Hangman.Init(GetRandomWord("./backend/resources/" + file))
 }
 
 func (Hangman *Hangman) GetLives() int {
