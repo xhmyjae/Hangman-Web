@@ -16,6 +16,16 @@ type State struct {
 }
 
 var state = State{Menu: "main", Clay: Hangman{}}
+var ch = make(chan struct{}, 2)
+
+func mainHandler(w http.ResponseWriter, r *http.Request) {
+	ch <- struct{}{}
+	defer func() {
+		<-ch
+	}()
+
+	http.DefaultServeMux.ServeHTTP(w, r)
+}
 
 func main() {
 	rand.Seed(time.Now().UnixNano())
@@ -64,6 +74,5 @@ func main() {
 		tmpl.ExecuteTemplate(w, "main", state)
 	})
 
-	http.ListenAndServe(":8999", nil)
-
+	http.ListenAndServe(":8999", http.HandlerFunc(mainHandler))
 }
