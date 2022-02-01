@@ -11,7 +11,6 @@ html, body {
     height: 100%;
     width: 100%;
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(315deg, #ffffff, #d7e1ec);
 }
 
 .letters {
@@ -153,3 +152,22 @@ html, body {
     transition: all 0.5s;
 }
 
+.word_text {
+    padding: 13px 20px;
+    padding-left: 20px;
+    padding-left: 55px;
+    height: 48px;
+    width: 25vw;
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.5px;
+    outline: none;
+    color: #c4c3ca;
+    background-color: #212129;
+    border: none;
+    transition: all 200ms linear;
+    box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2);
+    font-family: "Poppins", sans-serif;
+}
