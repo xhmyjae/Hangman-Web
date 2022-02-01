@@ -176,3 +176,9 @@
 img {
     width: 20%;
 }
+
+.data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
