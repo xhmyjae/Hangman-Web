@@ -1,7 +1,6 @@
 const elements = document.querySelectorAll('.icon');
 const inputs = [...document.querySelectorAll('p.player_input')];
 const lettersEntered = inputs.map(letter => letter.innerText.replace('_', '')).join('');
-console.log(lettersEntered);
 
 function letterUsed(element) {
     const letter = element.querySelector('span').innerText;

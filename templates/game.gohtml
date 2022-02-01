@@ -2,7 +2,7 @@
     <script defer src="/js/events.js"></script>
     <script defer src="/js/index.js"></script>
 
-    <p class="classic_text">{{.Lives}}</p>
+    <p class="classic_text">Vies : {{.Lives}}</p>
     <div class="images">
         <img src="/resources/hangman{{.Lives}}.png" alt="hangman">
     </div>
@@ -13,12 +13,13 @@
     </form>
 
     <div class="data">
-        <p class="classic_text">{{.Lives}}</p>
         <p class="classic_text player_input">{{.PlayerWord}}</p>
         <p class="classic_text player_input">{{.TriedLetters}}</p>
-        <p class="classic_text">{{range .TriedWords}}
+        <p class="classic_text">
+            Mots testés: {{range .TriedWords}}
                 {{.}}
-            {{end}}</p>
+            {{end}}
+        </p>
     </div>
 
     <div class="tooltips">

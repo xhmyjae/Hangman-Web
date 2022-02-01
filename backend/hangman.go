@@ -8,9 +8,9 @@ import (
 )
 
 type Hangman struct {
-	Difficulty string
+	Difficulty   string
 	MaxLives     int
-	Lives 		 int
+	Lives        int
 	PlayerWord   string
 	TriedLetters string
 	TriedWords   []string
@@ -56,9 +56,9 @@ func (Hangman *Hangman) GetLives() int {
 
 func (Hangman *Hangman) TryWord(word string) bool {
 	if word == Hangman.Word {
-		Hangman.TriedWords = append(Hangman.TriedWords, word)
 		return true
 	}
+	Hangman.TriedWords = append(Hangman.TriedWords, word)
 	Hangman.Lives -= 2
 	return false
 }
