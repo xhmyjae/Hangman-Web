@@ -46,6 +46,11 @@ func main() {
 
 	state.Clay.InitRandomWord()
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		queries := r.URL.Query()
+		if queries.Get("reload") == "true" {
+			state.Clay.InitRandomWord()
+			http.Redirect(w, r, "/", http.StatusSeeOther)
+		}
 		state.Menu = "main"
 		tmpl.ExecuteTemplate(w, "main", state)
 	})
@@ -71,7 +76,7 @@ func main() {
 	http.HandleFunc("/reload", func(w http.ResponseWriter, r *http.Request) {
 		state.Clay.InitRandomWord()
 		state.Menu = "game"
-		tmpl.ExecuteTemplate(w, "main", state)
+		http.Redirect(w, r, "/hangman", http.StatusSeeOther)
 	})
 
 	http.ListenAndServe(":8999", http.HandlerFunc(mainHandler))

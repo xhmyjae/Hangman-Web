@@ -10,12 +10,14 @@
         <p>{{.Lives}}</p>
         <p>{{.PlayerWord}}</p>
         <p>{{.TriedLetters}}</p>
-        <p>{{.TriedWords}}</p>
+        <p>{{range .TriedWords}}
+            {{.}}
+        {{end}}</p>
     </div>
 
-        <button class="reload">
-            <a href="/">Reload</a>
-        </button>
+    <button class="reload">
+        <a href="/reload">Reload</a>
+    </button>
 
     <div class="tooltips">
         <div class="tooltip">Add</div>
@@ -103,7 +105,7 @@
         </div>
     </div>
     <div class="content">
-        <a class="button" href="/">
+        <a class="button" href="/?reload=true">
             <span>Retour</span>
         </a>
     </div>
