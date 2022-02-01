@@ -10,11 +10,13 @@
         <p>{{.Lives}}</p>
         <p>{{.PlayerWord}}</p>
         <p>{{.TriedLetters}}</p>
-        <p>{{.TriedWords}}</p>
+        <p>{{range .TriedWords}}
+                {{.}}
+            {{end}}</p>
     </div>
 
     <button class="reload">
-        <a href="/">Reload</a>
+        <a href="/reload">Reload</a>
     </button>
 
     <div class="tooltips">
@@ -103,7 +105,7 @@
         </div>
     </div>
     <div class="content" id="gameback">
-        <a class="button" href="/">
+        <a class="button" href="/?reload=true">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve" width="50px"
                  height="50px" class="svg_back">
